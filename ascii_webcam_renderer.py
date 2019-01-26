@@ -36,6 +36,8 @@ def main():
 
                 out_str += '\n'
 
+
+        out_str += '\033[0;0H'
         sys.stdout.write(out_str)
         sys.stdout.flush()
 

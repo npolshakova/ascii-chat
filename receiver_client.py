@@ -32,7 +32,7 @@ while True:
 while True:
 
    try:
-      temp = s.recv(10).decode('utf-8')
+      temp = s.recv(400).decode('utf-8')
       sys.stdout.write(temp)
       if temp is None:
          break
