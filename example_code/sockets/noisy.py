@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
 import time
+import sys
 
 while(1):
     print(time.time())
-    time.sleep(.5)
+    sys.stdout.flush()
+    time.sleep(.01)

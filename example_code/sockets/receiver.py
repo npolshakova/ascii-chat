@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
 import socket               # Import socket module
+import sys
 s = socket.socket()         # Create a socket object
-host = '192.168.240.1' # Get local machine name
-port = 23                # Reserve a port for your service.
+host = '127.0.0.1' # Get local machine name
+port = 1234                # Reserve a port for your service.
 while True:
    input('Connect?')
    try:
@@ -16,8 +17,8 @@ while True:
 while True:
 
    try:
-      temp = s.recv(10)
-      print(temp)
+      temp = s.recv(10).decode('utf-8')
+      sys.stdout.write(temp)
       if temp is None:
          break
    except (KeyboardInterrupt,socket.error):
