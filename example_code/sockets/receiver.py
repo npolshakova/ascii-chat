@@ -2,9 +2,24 @@
 
 import socket               # Import socket module
 import sys
+import termios
+import struct
+import fcntl
+
 s = socket.socket()         # Create a socket object
 host = '127.0.0.1' # Get local machine name
 port = 1234                # Reserve a port for your service.
+
+# Setup terminal window size
+row = 100
+col = 100
+# change tty/pty setting
+winsize = struct.pack("HHHH", row, col, 0, 0)
+fcntl.ioctl(sys.stdin, termios.TIOCSWINSZ, winsize)
+
+# change actual window size
+sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=100, cols=100))
+
 while True:
    input('Connect?')
    try:
