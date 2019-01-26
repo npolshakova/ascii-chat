@@ -5,7 +5,7 @@ s = socket.socket()         # Create a socket object
 host = '192.168.240.1' # Get local machine name
 port = 23                # Reserve a port for your service.
 while True:
-   raw_input('Connect?')
+   input('Connect?')
    try:
       s.connect((host, port))
       print('Connected')
@@ -17,7 +17,7 @@ while True:
 
    try:
       temp = s.recv(10)
-      print temp
+      print(temp)
       if temp is None:
          break
    except (KeyboardInterrupt,socket.error):
