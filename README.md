@@ -19,6 +19,14 @@ apt-get install python3-opencv ffmpeg vlc xdotool
 
 # Running
 
+To get a quick taste of ascii-rendered goodness, you can try out `ascii_webcam_renderer.py` which
+displays video from your webcam rendered as ascii. You need to provide the webcam device id, which
+is probably 0, e.g.
+
+```
+./ascii_webcam_renderer.py 0
+```
+
 `connect.sh` is the entry point for the video chat software. It requires arguments specifying the
 peer's IP Address, and the hardware device numbers for the microphone and webcam. e.g.
 ```
