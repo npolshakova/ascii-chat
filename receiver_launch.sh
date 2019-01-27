@@ -7,4 +7,4 @@
 ./receiver_client.py $1 $2 &
 
 # Launch the sound listener
-cvlc udp://$1@:$2
+#cvlc udp://$1@:$2

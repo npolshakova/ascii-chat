@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import time
 import socket               # Import socket module
 import sys
 import termios
@@ -20,7 +21,7 @@ def main():
 
     s = socket.socket()         # Create a socket object
     host = args.host # Get local machine name
-    port = args.port                # Reserve a port for your service.
+    port = int(args.port)    # Reserve a port for your service.
 
     # change tty/pty setting
     winsize = struct.pack("HHHH", NROWS, NCOLS, 0, 0)
@@ -30,26 +31,29 @@ def main():
     sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=NROWS, cols=NCOLS))
 
     while True:
-     input('Connect?')
-     try:
-        s.connect((host, port))
-        print('Connected')
-        break
-     except socket.error as e:
-        print('Failed ' + str(e))
+        input('Connect?')
+        try:
+            s.connect((host, port))
+            print('Connected')
+            break
+        except socket.error as e:
+            print('Failed ' + str(e))
 
     while True:
-
-     try:
-        temp = s.recv(400).decode('utf-8')
-        sys.stdout.write(temp)
-        if temp is None:
-           break
-     except (KeyboardInterrupt,socket.error):
-           s.close                     # Close the socket when done
-           s.shutdown(socket.SHUT_RD)
-           print('closed')
-           break
+        prev_time = time.time()
+        try:
+            if time.time() - prev_time > 1:
+                prev_time = time.time()
+                sys.stdout.write('\033[2J')
+            temp = s.recv(400).decode('utf-8')
+            sys.stdout.write(temp)
+            if temp is None:
+               break
+        except (KeyboardInterrupt,socket.error):
+            s.close                     # Close the socket when done
+            s.shutdown(socket.SHUT_RD)
+            print('closed')
+            break
 
 if __name__ == '__main__':
     main()
