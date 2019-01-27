@@ -7,4 +7,4 @@
 ./receiver_client.py $1 $2 &
 
 # Launch the sound listener
-cvlc rtp://$1@:$2
+cvlc rtp://$1@:$(($2 + 1))

@@ -11,8 +11,8 @@ def main():
         width = int(sys.argv[2])
         height = int(sys.argv[3])
     else:
-        width = 600
-        height = 450
+        width = 200
+        height = 200
 
     capture = cv2.VideoCapture(cam_id)
     while(True):
@@ -30,7 +30,7 @@ def main():
         for ix in range(height):
             if ix % 2 == 0 and ix % 4 == 0:
                 for jx in range(width):
-                    rgba = pixels[jx, ix]
+                    rgba = pixels[200 + jx, 125 + ix]
                     rgb = rgba[:3]
                     out_str += color[int(sum(rgb) / 3.0 / 256.0 * 16.0)]
 

@@ -7,10 +7,11 @@ import termios
 import struct
 import fcntl
 import argparse
+import os
 
 # Setup terminal window size
-NROWS = 450
-NCOLS = 600
+NROWS = 100
+NCOLS = 200
 
 def main():
     parser = argparse.ArgumentParser('Socket Receiver for displaying text to termina')
@@ -56,4 +57,12 @@ def main():
             break
 
 if __name__ == '__main__':
-    main()
+    os.system('xdotool key ctrl+minus')
+    os.system('xdotool key ctrl+minus')
+    try:
+        main()
+    except:
+        pass
+    finally:
+        os.system('xdotool key ctrl+plus')
+        os.system('xdotool key ctrl+plus')
