@@ -2,7 +2,7 @@
 
 `ascii-chat` allows you to videochat from terminal. Tested on Ubuntu 18.04 with the default
 gnome-terminal. The code would probably require some minor tweaks to get working on Mac, but there's
-not fundamental reason the code is incompatible. 
+no fundamental reason the code is incompatible. 
 
 # Installation
 
