@@ -1,12 +1,18 @@
 #!/usr/bin/python3
 import socket
 import sys
+import argparse
+
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+
 #host = socket.gethostname()
 host = ''
-port = 1234
 
+parser = argparse.ArgumentParser("Socket Port")
+parser.add_argument("port", help="port to connect on")
+args = parser.parse_args()
+port = int(args.port)
 
 s.bind((host,port))
 
