@@ -19,9 +19,9 @@ def main():
 
     args = parser.parse_args()
 
-    s = socket.socket()         # Create a socket object
-    host = args.host # Get local machine name
-    port = int(args.port)    # Reserve a port for your service.
+    s = socket.socket()
+    host = args.host
+    port = int(args.port)
 
     # change tty/pty setting
     winsize = struct.pack("HHHH", NROWS, NCOLS, 0, 0)
