@@ -10,7 +10,7 @@ import argparse
 import os
 
 # Setup terminal window size
-NROWS = 100
+NROWS = 50
 NCOLS = 200
 
 def main():
