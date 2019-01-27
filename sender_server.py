@@ -4,20 +4,19 @@ import sys
 import argparse
 
 def main():
-    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
 
-    #host = socket.gethostname()
-    host = ''
-
-    parser = argparse.ArgumentParser("Socket Port")
+    parser = argparse.ArgumentParser('Serves data from stdin over TCP')
     parser.add_argument("port", help="port to connect on")
     args = parser.parse_args()
     port = int(args.port)
 
-    s.bind((host,port))
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
 
+    host = ''
+    s.bind((host,port))
     s.listen(5)
+
     while True:
         try:
             try:

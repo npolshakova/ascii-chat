@@ -20,9 +20,9 @@ def main():
 
     args = parser.parse_args()
 
-    s = socket.socket()
     host = args.host
     port = int(args.port)
+    s = socket.socket()
 
     # change tty/pty setting
     winsize = struct.pack("HHHH", NROWS, NCOLS, 0, 0)
